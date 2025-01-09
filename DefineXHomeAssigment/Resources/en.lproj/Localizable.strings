@@ -1,0 +1,42 @@
+"splash.title" = "Welcome";
+
+"login.title" = "Login";
+"login.app_title" = "DefineX\nCase Study";
+"login.email.title" = "Email address";
+"login.email.placeholder" = "Enter your email";
+"login.password.title" = "Password";
+"login.password.placeholder" = "Enter your password";
+"login.button.title" = "LOGIN";
+"login.forgot_password.title" = "I FORGOT MY PASS";
+"login.social.facebook" = "FACEBOOK";
+"login.social.twitter" = "TWITTER";
+
+"login.error.email_required" = "Email is required";
+"login.error.password_required" = "Password is required";
+"login.error.invalid_email" = "Invalid email format";
+"login.error.invalid_credentials" = "Invalid email or password";
+"login.error.password_short" = "Password must be at least 6 characters";
+"login.error.empty_fields" = "Please fill in all fields";
+
+"discovery.title" = "Discovery";
+"discovery.error.title" = "Error";
+"discovery.coming_soon.title" = "Coming Soon";
+"discovery.coming_soon.message" = "This feature will be available soon!";
+
+"categories.title" = "Categories";
+"categories.coming_soon" = "Categories - Coming Soon";
+
+"cart.title" = "Cart";
+"cart.coming_soon" = "Cart - Coming Soon";
+
+"profile.title" = "Profile";
+"profile.coming_soon" = "Profile - Coming Soon";
+
+"favorites.title" = "Favorites";
+"favorites.coming_soon" = "Favorites - Coming Soon";
+
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+"common.error" = "Error";
+"common.coming_soon.title" = "Coming Soon";
+"common.coming_soon.message" = "This feature will be available soon."; 

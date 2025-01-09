@@ -1,0 +1,40 @@
+"login.title" = "Giriş";
+"login.app_title" = "DefineX\nVaka Çalışması";
+"login.email.title" = "E-posta adresi";
+"login.email.placeholder" = "E-posta adresinizi girin";
+"login.password.title" = "Şifre";
+"login.password.placeholder" = "Şifrenizi girin";
+"login.button.title" = "GİRİŞ YAP";
+"login.forgot_password.title" = "ŞİFREMİ UNUTTUM";
+"login.social.facebook" = "FACEBOOK";
+"login.social.twitter" = "TWITTER";
+
+"login.error.email_required" = "E-posta adresi zorunludur";
+"login.error.password_required" = "Şifre zorunludur";
+"login.error.invalid_email" = "Geçersiz e-posta formatı";
+"login.error.invalid_credentials" = "E-posta veya şifre hatalı";
+"login.error.password_short" = "Şifre en az 6 karakter olmalıdır";
+"login.error.empty_fields" = "Lütfen tüm alanları doldurun";
+
+"discovery.title" = "Keşfet";
+"discovery.error.title" = "Hata";
+"discovery.coming_soon.title" = "Çok Yakında";
+"discovery.coming_soon.message" = "Bu özellik yakında kullanıma sunulacak!";
+
+"categories.title" = "Kategoriler";
+"categories.coming_soon" = "Kategoriler - Çok Yakında";
+
+"cart.title" = "Sepet";
+"cart.coming_soon" = "Sepet - Çok Yakında";
+
+"profile.title" = "Profil";
+"profile.coming_soon" = "Profil - Çok Yakında";
+
+"favorites.title" = "Favoriler";
+"favorites.coming_soon" = "Favoriler - Çok Yakında";
+
+"common.ok" = "Tamam";
+"common.cancel" = "İptal";
+"common.error" = "Hata";
+"common.coming_soon.title" = "Çok Yakında";
+"common.coming_soon.message" = "Bu özellik çok yakında kullanıma açılacaktır."; 
