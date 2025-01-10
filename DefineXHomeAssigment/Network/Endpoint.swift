@@ -74,11 +74,13 @@ enum DiscoveryEndpoint: Endpoint {
     }
     
     var headers: [String: String]? {
-        let cachedResponse: LoginResponse? = try? CacheManager.shared.load(forKey: CacheManager.CacheKey.userToken)
         var headers = ["Content-Type": "application/json"]
         
-        if let loginResponse = cachedResponse {
-            headers["token"] = "\(loginResponse.token)"
+        switch self {
+        case .firstHorizontalList, .secondHorizontalList, .thirdTwoColumnList:
+            if let token = UserManager.shared.currentToken {
+                headers["token"] = token
+            }
         }
         
         return headers

@@ -23,11 +23,9 @@ extension LoginInteractor: LoginInteractorProtocol {
             useCache: false
         ) { [weak self] result in
             switch result {
-            case .success(let response):
-                if let loginResponse = response as LoginResponse? {
-                    self?.userManager.login(with: loginResponse.token, email: email)
-                    self?.presenter?.loginSuccess(token: loginResponse.token)
-                }
+            case .success(let loginResponse):
+                self?.userManager.login(with: loginResponse.token, email: email)
+                self?.presenter?.loginSuccess(token: loginResponse.token)
             case .failure(let error):
                 self?.presenter?.loginFailure(error: error)
             }
