@@ -211,18 +211,18 @@
 		CB0235BB2D3001BC00B12729 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					CB0235C22D3001BC00B12729 = {
-						CreatedOnToolsVersion = 16.2;
+						CreatedOnToolsVersion = 15.0;
 					};
 					CB0235D82D3001BD00B12729 = {
-						CreatedOnToolsVersion = 16.2;
+						CreatedOnToolsVersion = 15.4;
 						TestTargetID = CB0235C22D3001BC00B12729;
 					};
 					CB0235E22D3001BD00B12729 = {
-						CreatedOnToolsVersion = 16.2;
+						CreatedOnToolsVersion = 15.4;
 						TestTargetID = CB0235C22D3001BC00B12729;
 					};
 				};
