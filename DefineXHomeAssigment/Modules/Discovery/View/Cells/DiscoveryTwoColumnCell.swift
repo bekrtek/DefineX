@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SDWebImage
 
 final class DiscoveryTwoColumnCell: UICollectionViewCell {
     static let identifier = "DiscoveryTwoColumnCell"

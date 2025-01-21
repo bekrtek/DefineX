@@ -17,12 +17,18 @@ final class MainTabBarController: UITabBarController {
         setupTabs()
         setupAppearance()
         delegate = self
-        
-        // Set initial scale for selected tab
-        if let selectedIndex = tabBar.selectedItem?.tag,
-           let tabBarButtons = tabBar.subviews.filter({ $0.isKind(of: NSClassFromString("UITabBarButton")!) }) as? [UIView],
-           selectedIndex < tabBarButtons.count {
-            tabBarButtons[selectedIndex].transform = CGAffineTransform(scaleX: selectedItemImageScale, y: selectedItemImageScale)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let tabBarButtons = tabBar.subviews.filter { $0.isKind(of: NSClassFromString("UITabBarButton")!) }
+        tabBarButtons.enumerated().forEach { index, button in
+            if index == selectedIndex {
+                button.transform = CGAffineTransform(scaleX: selectedItemImageScale, y: selectedItemImageScale)
+            } else {
+                button.transform = CGAffineTransform(scaleX: unselectedItemImageScale, y: unselectedItemImageScale)
+            }
         }
     }
     
@@ -65,7 +71,6 @@ final class MainTabBarController: UITabBarController {
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.navigationBar.prefersLargeTitles = false
         
-        // Setup navigation bar appearance
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
@@ -80,7 +85,6 @@ final class MainTabBarController: UITabBarController {
         nav.navigationBar.compactAppearance = appearance
         nav.navigationBar.tintColor = .black
         
-        // Setup tab bar item
         nav.tabBarItem = UITabBarItem(
             title: title,
             image: UIImage(systemName: image)?.withConfiguration(UIImage.SymbolConfiguration(scale: .medium)),
@@ -130,7 +134,6 @@ final class MainTabBarController: UITabBarController {
         tabBar.itemPositioning = .centered
         tabBar.itemSpacing = 16
         
-        if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = .systemBackground
@@ -148,15 +151,7 @@ final class MainTabBarController: UITabBarController {
             
             tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = appearance
-        } else {
-            tabBar.items?.forEach { item in
-                item.setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
-                item.setTitleTextAttributes([
-                    .foregroundColor: UIColor.systemBlue,
-                    .font: UIFont.systemFont(ofSize: 12, weight: .medium)
-                ], for: .selected)
-            }
-        }
+        
     }
     
     private func createProfileBarButton() -> UIBarButtonItem {
@@ -182,44 +177,20 @@ extension MainTabBarController: UITabBarControllerDelegate {
               fromIndex != toIndex else {
             return true
         }
-        
-        // Animate tab selection
-        UIView.transition(from: fromView,
-                         to: toView,
-                         duration: 0.2,
-                         options: [.transitionCrossDissolve],
-                         completion: nil)
-        
-        // Animate icon scale
-        let tabBarButtons = tabBar.subviews.filter { $0.isKind(of: NSClassFromString("UITabBarButton")!) }
-        
-        UIView.animate(withDuration: 0.2) {
-            tabBarButtons.enumerated().forEach { index, button in
-                if index == toIndex {
-                    button.transform = CGAffineTransform(scaleX: self.selectedItemImageScale, y: self.selectedItemImageScale)
-                } else {
-                    button.transform = CGAffineTransform(scaleX: self.unselectedItemImageScale, y: self.unselectedItemImageScale)
-                }
-            }
-        }
-        
         return true
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        // Animate title appearance
-        UIView.animate(withDuration: 0.2) {
-            self.tabBar.items?.forEach { tabItem in
-                if tabItem == item {
-                    tabItem.setTitleTextAttributes([
-                        .foregroundColor: UIColor.systemBlue,
-                        .font: UIFont.systemFont(ofSize: 12, weight: .medium)
-                    ], for: .selected)
-                } else {
-                    tabItem.setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
-                }
+        self.tabBar.items?.forEach { tabItem in
+            if tabItem == item {
+                tabItem.setTitleTextAttributes([
+                    .foregroundColor: UIColor.systemBlue,
+                    .font: UIFont.systemFont(ofSize: 12, weight: .medium)
+                ], for: .selected)
+            } else {
+                tabItem.setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
             }
-            self.tabBar.layoutIfNeeded()
         }
+        self.tabBar.layoutIfNeeded()
     }
-} 
+}
