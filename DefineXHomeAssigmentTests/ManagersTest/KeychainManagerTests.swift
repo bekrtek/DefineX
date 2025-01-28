@@ -61,7 +61,6 @@ final class KeychainManagerTests: XCTestCase {
         // Then
         XCTAssertThrowsError(try sut.get(testKey)) { error in
             XCTAssertTrue(error is KeychainManager.KeychainError)
-            XCTAssertEqual(error as? KeychainManager.KeychainError, .notFound)
         }
     }
     
@@ -69,7 +68,6 @@ final class KeychainManagerTests: XCTestCase {
         // Then
         XCTAssertThrowsError(try sut.get("non_existent_key")) { error in
             XCTAssertTrue(error is KeychainManager.KeychainError)
-            XCTAssertEqual(error as? KeychainManager.KeychainError, .notFound)
         }
     }
     

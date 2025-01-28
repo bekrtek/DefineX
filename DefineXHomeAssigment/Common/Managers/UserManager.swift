@@ -8,7 +8,7 @@
 import Foundation
 import Security
 
-final class UserManager {
+class UserManager {
     // MARK: - Properties
     static let shared = UserManager()
     private let keychain = KeychainManager.shared
@@ -50,7 +50,7 @@ final class UserManager {
     }
     
     // MARK: - Initialization
-    private init() {}
+    init() {}
     
     // MARK: - Public Methods
     func login(with token: String, email: String) {

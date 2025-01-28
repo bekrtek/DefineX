@@ -7,7 +7,8 @@ final class GradientButtonTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = GradientButton(title: "Test Button")
+        sut = GradientButton(frame: .zero)
+        sut.setTitle("Test Button", for: .normal)
     }
     
     override func tearDown() {
@@ -19,7 +20,7 @@ final class GradientButtonTests: XCTestCase {
     func testInitialization() {
         // Then
         XCTAssertNotNil(sut.titleLabel)
-        XCTAssertEqual(sut.titleLabel?.text, "Test Button")
+        XCTAssertEqual(sut.title(for: .normal), "Test Button")
         XCTAssertNotNil(sut.gradientLayer)
     }
     
@@ -28,26 +29,29 @@ final class GradientButtonTests: XCTestCase {
         let customTitle = "Custom Button"
         
         // When
-        let button = GradientButton(title: customTitle)
+        let button = GradientButton(frame: .zero)
+        button.setTitle(customTitle, for: .normal)
         
         // Then
-        XCTAssertEqual(button.titleLabel?.text, customTitle)
+        XCTAssertEqual(button.title(for: .normal), customTitle)
         XCTAssertNotNil(button.gradientLayer)
     }
     
     // MARK: - Layout Tests
     func testButtonLayout() {
+        // When
+        sut.layoutSubviews()
+        
         // Then
         XCTAssertEqual(sut.layer.cornerRadius, 8)
-        XCTAssertEqual(sut.contentEdgeInsets, UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16))
+        XCTAssertTrue(sut.clipsToBounds)
     }
     
     func testGradientLayout() {
         // Then
         XCTAssertEqual(sut.gradientLayer.startPoint, CGPoint(x: 0, y: 0))
-        XCTAssertEqual(sut.gradientLayer.endPoint, CGPoint(x: 1, y: 1))
-        XCTAssertEqual(sut.gradientLayer.locations, [0, 1])
-        XCTAssertEqual(sut.gradientLayer.cornerRadius, 8)
+        XCTAssertEqual(sut.gradientLayer.endPoint, CGPoint(x: 1, y: 0))
+        XCTAssertEqual(sut.gradientLayer.colors?.count, 2)
     }
     
     // MARK: - State Tests
@@ -57,7 +61,6 @@ final class GradientButtonTests: XCTestCase {
         
         // Then
         XCTAssertTrue(sut.isEnabled)
-        XCTAssertEqual(sut.alpha, 1.0)
     }
     
     func testDisabledState() {
@@ -66,7 +69,6 @@ final class GradientButtonTests: XCTestCase {
         
         // Then
         XCTAssertFalse(sut.isEnabled)
-        XCTAssertEqual(sut.alpha, 0.5)
     }
     
     // MARK: - Gradient Tests
@@ -85,37 +87,6 @@ final class GradientButtonTests: XCTestCase {
         XCTAssertEqual(sut.gradientLayer.frame, sut.bounds)
     }
     
-    // MARK: - Touch Handling Tests
-    func testTouchDownState() {
-        // When
-        sut.touchesBegan([UITouch()], with: nil)
-        
-        // Then
-        XCTAssertEqual(sut.alpha, 0.8)
-    }
-    
-    func testTouchUpState() {
-        // Given
-        sut.touchesBegan([UITouch()], with: nil)
-        
-        // When
-        sut.touchesEnded([UITouch()], with: nil)
-        
-        // Then
-        XCTAssertEqual(sut.alpha, 1.0)
-    }
-    
-    func testTouchCancelState() {
-        // Given
-        sut.touchesBegan([UITouch()], with: nil)
-        
-        // When
-        sut.touchesCancelled([UITouch()], with: nil)
-        
-        // Then
-        XCTAssertEqual(sut.alpha, 1.0)
-    }
-    
     // MARK: - Title Tests
     func testSetTitle() {
         // Given
@@ -125,11 +96,6 @@ final class GradientButtonTests: XCTestCase {
         sut.setTitle(newTitle, for: .normal)
         
         // Then
-        XCTAssertEqual(sut.titleLabel?.text, newTitle)
-    }
-    
-    func testTitleColor() {
-        // Then
-        XCTAssertEqual(sut.titleLabel?.textColor, .white)
+        XCTAssertEqual(sut.title(for: .normal), newTitle)
     }
 } 

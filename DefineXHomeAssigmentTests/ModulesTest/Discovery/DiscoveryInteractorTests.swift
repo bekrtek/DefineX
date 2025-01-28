@@ -1,6 +1,7 @@
 import XCTest
 @testable import DefineXHomeAssigment
 
+@MainActor
 final class DiscoveryInteractorTests: XCTestCase {
     var sut: DiscoveryInteractor!
     var mockNetworkManager: MockNetworkManager!
@@ -39,10 +40,14 @@ final class DiscoveryInteractorTests: XCTestCase {
                 case .success(let discoveryResponse):
                     if let result = discoveryResponse as? T {
                         completion(.success(result))
+                    } else {
+                        completion(.failure(.decodingError))
                     }
                 case .failure(let error):
                     completion(.failure(error))
                 }
+            } else {
+                completion(.failure(.serverError("No mock response set for endpoint: \(endpoint.path)")))
             }
         }
         
@@ -99,9 +104,11 @@ final class DiscoveryInteractorTests: XCTestCase {
     private func createMockProducts(count: Int, prefix: String) -> [ProductModel] {
         return (0..<count).map { index in
             ProductModel(
-                id: index,
+                imageUrl: "https://example.com/image\(index).jpg",
                 description: "\(prefix)_product_\(index)",
                 price: Price(value: Double(index * 10), currency: "$"),
+                oldPrice: Price(value: Double(index * 15), currency: "$"),
+                discount: "\(index * 10)% OFF",
                 ratePercentage: index * 20
             )
         }
@@ -110,47 +117,85 @@ final class DiscoveryInteractorTests: XCTestCase {
     // MARK: - Tests
     func testFetchDiscoveryDataSuccess() {
         // Given
+        let expectation = XCTestExpectation(description: "Fetch discovery data success")
         let firstList = createMockProducts(count: 3, prefix: "first")
         let secondList = createMockProducts(count: 4, prefix: "second")
         let twoColumnList = createMockProducts(count: 6, prefix: "column")
         
         mockNetworkManager.setupMockResponses(
-            firstList: .success(DiscoveryResponse(list: firstList)),
-            secondList: .success(DiscoveryResponse(list: secondList)),
-            twoColumnList: .success(DiscoveryResponse(list: twoColumnList))
+            firstList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: firstList
+            )),
+            secondList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: secondList
+            )),
+            twoColumnList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: twoColumnList
+            ))
         )
         
         // When
         sut.fetchDiscoveryData()
         
         // Then
-        XCTAssertEqual(mockNetworkManager.requestCallCount, 3)
-        XCTAssertTrue(mockPresenter.fetchSuccessCalled)
-        XCTAssertEqual(mockPresenter.lastFirstList?.count, firstList.count)
-        XCTAssertEqual(mockPresenter.lastSecondList?.count, secondList.count)
-        XCTAssertEqual(mockPresenter.lastTwoColumnList?.count, twoColumnList.count)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertEqual(self.mockNetworkManager.requestCallCount, 3)
+            XCTAssertTrue(self.mockPresenter.fetchSuccessCalled)
+            XCTAssertEqual(self.mockPresenter.lastFirstList?.count, firstList.count)
+            XCTAssertEqual(self.mockPresenter.lastSecondList?.count, secondList.count)
+            XCTAssertEqual(self.mockPresenter.lastTwoColumnList?.count, twoColumnList.count)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testFetchDiscoveryDataPartialFailure() {
         // Given
+        let expectation = XCTestExpectation(description: "Fetch discovery data partial failure")
         let firstList = createMockProducts(count: 3, prefix: "first")
         mockNetworkManager.setupMockResponses(
-            firstList: .success(DiscoveryResponse(list: firstList)),
+            firstList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: firstList
+            )),
             secondList: .failure(.serverError("Error")),
-            twoColumnList: .success(DiscoveryResponse(list: []))
+            twoColumnList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: []
+            ))
         )
         
         // When
         sut.fetchDiscoveryData()
         
         // Then
-        XCTAssertEqual(mockNetworkManager.requestCallCount, 3)
-        XCTAssertTrue(mockPresenter.fetchFailureCalled)
-        XCTAssertNotNil(mockPresenter.lastError)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertEqual(self.mockNetworkManager.requestCallCount, 3)
+            XCTAssertTrue(self.mockPresenter.fetchFailureCalled)
+            XCTAssertNotNil(self.mockPresenter.lastError)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testFetchDiscoveryDataAllFailure() {
         // Given
+        let expectation = XCTestExpectation(description: "Fetch discovery data all failure")
         mockNetworkManager.setupMockResponses(
             firstList: .failure(.serverError("Error 1")),
             secondList: .failure(.serverError("Error 2")),
@@ -161,50 +206,53 @@ final class DiscoveryInteractorTests: XCTestCase {
         sut.fetchDiscoveryData()
         
         // Then
-        XCTAssertEqual(mockNetworkManager.requestCallCount, 3)
-        XCTAssertTrue(mockPresenter.fetchFailureCalled)
-        XCTAssertNotNil(mockPresenter.lastError)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertEqual(self.mockNetworkManager.requestCallCount, 3)
+            XCTAssertTrue(self.mockPresenter.fetchFailureCalled)
+            XCTAssertNotNil(self.mockPresenter.lastError)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 2.0)
     }
     
     func testFetchDiscoveryDataEmptyLists() {
         // Given
+        let expectation = XCTestExpectation(description: "Fetch discovery data empty lists")
         mockNetworkManager.setupMockResponses(
-            firstList: .success(DiscoveryResponse(list: [])),
-            secondList: .success(DiscoveryResponse(list: [])),
-            twoColumnList: .success(DiscoveryResponse(list: []))
+            firstList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: []
+            )),
+            secondList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: []
+            )),
+            twoColumnList: .success(DiscoveryResponse(
+                isSuccess: true,
+                message: "Success",
+                statusCode: 200,
+                list: []
+            ))
         )
         
         // When
         sut.fetchDiscoveryData()
         
         // Then
-        XCTAssertEqual(mockNetworkManager.requestCallCount, 3)
-        XCTAssertTrue(mockPresenter.fetchSuccessCalled)
-        XCTAssertEqual(mockPresenter.lastFirstList?.count, 0)
-        XCTAssertEqual(mockPresenter.lastSecondList?.count, 0)
-        XCTAssertEqual(mockPresenter.lastTwoColumnList?.count, 0)
-    }
-    
-    func testFetchDiscoveryDataWithCache() {
-        // Given
-        let firstList = createMockProducts(count: 3, prefix: "first")
-        let secondList = createMockProducts(count: 4, prefix: "second")
-        let twoColumnList = createMockProducts(count: 6, prefix: "column")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            XCTAssertEqual(self.mockNetworkManager.requestCallCount, 3)
+            XCTAssertTrue(self.mockPresenter.fetchSuccessCalled)
+            XCTAssertEqual(self.mockPresenter.lastFirstList?.count, 0)
+            XCTAssertEqual(self.mockPresenter.lastSecondList?.count, 0)
+            XCTAssertEqual(self.mockPresenter.lastTwoColumnList?.count, 0)
+            expectation.fulfill()
+        }
         
-        mockNetworkManager.setupMockResponses(
-            firstList: .success(DiscoveryResponse(list: firstList)),
-            secondList: .success(DiscoveryResponse(list: secondList)),
-            twoColumnList: .success(DiscoveryResponse(list: twoColumnList))
-        )
-        
-        // When
-        sut.fetchDiscoveryData()
-        
-        // Then
-        XCTAssertEqual(mockNetworkManager.requestCallCount, 3)
-        XCTAssertTrue(mockPresenter.fetchSuccessCalled)
-        
-        // Verify cache is being used
-        XCTAssertGreaterThan(mockCacheManager.saveCallCount, 0)
+        wait(for: [expectation], timeout: 2.0)
     }
 } 

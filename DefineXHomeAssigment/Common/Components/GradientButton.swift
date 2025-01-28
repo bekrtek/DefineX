@@ -8,7 +8,7 @@
 import UIKit
 
 class GradientButton: UIButton {
-    private let gradientLayer = CAGradientLayer()
+    let gradientLayer = CAGradientLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,7 +20,7 @@ class GradientButton: UIButton {
         setupGradient()
     }
     
-    private func setupGradient() {
+    func setupGradient() {
         gradientLayer.colors = [
             Colors.Button.loginGradientStart.cgColor,
             Colors.Button.loginGradientEnd.cgColor

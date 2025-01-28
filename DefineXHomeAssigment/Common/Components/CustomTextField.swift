@@ -72,7 +72,7 @@ class CustomTextField: UIView {
         return label
     }()
     
-    private lazy var textField: UITextField = {
+    lazy var textField: UITextField = {
         let textField = UITextField()
         textField.setTypography(.regular14)
         textField.borderStyle = .none

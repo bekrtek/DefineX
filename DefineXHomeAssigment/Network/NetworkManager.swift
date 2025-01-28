@@ -7,13 +7,28 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case invalidURL
     case noData
     case decodingError
     case serverError(String)
     case unauthorized
     case unknown
+    
+    static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidURL, .invalidURL),
+             (.noData, .noData),
+             (.decodingError, .decodingError),
+             (.unauthorized, .unauthorized),
+             (.unknown, .unknown):
+            return true
+        case (.serverError(let lhsMessage), .serverError(let rhsMessage)):
+            return lhsMessage == rhsMessage
+        default:
+            return false
+        }
+    }
 }
 
 protocol NetworkManagerProtocol: AnyObject {
@@ -26,10 +41,12 @@ final class NetworkManager: NetworkManagerProtocol {
     private let baseURL = "https://teamdefinex-mobile-auth-casestudy.vercel.app"
     private let cacheManager: CacheManagerProtocol
     private let queue = DispatchQueue(label: "com.definex.networkmanager", attributes: .concurrent)
+    private let urlSession: URLSession
     
     // MARK: - Initialization
-    init(cacheManager: CacheManagerProtocol = CacheManager.shared) {
+    init(cacheManager: CacheManagerProtocol = CacheManager.shared, urlSession: URLSession = .shared) {
         self.cacheManager = cacheManager
+        self.urlSession = urlSession
     }
     
     // MARK: - NetworkManagerProtocol
@@ -81,7 +98,7 @@ final class NetworkManager: NetworkManagerProtocol {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         }
         
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+        let task = urlSession.dataTask(with: request) { [weak self] data, response, error in
             print("📥 Response received for: \(url.absoluteString)")
             
             if let error = error {
