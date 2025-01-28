@@ -10,11 +10,11 @@ struct DiscoveryResponse: Codable {
     let isSuccess: Bool
     let message: String
     let statusCode: Int?
-    let list: [DiscoveryItem]
+    let list: [ProductModel]
 }
 
 // MARK: - Entity
-struct DiscoveryItem: Codable {
+struct ProductModel: Codable {
     let imageUrl: String
     let description: String
     let price: Price

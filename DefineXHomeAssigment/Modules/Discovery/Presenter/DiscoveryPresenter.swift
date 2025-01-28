@@ -29,7 +29,7 @@ extension DiscoveryPresenter: DiscoveryPresenterProtocol {
         interactor?.fetchDiscoveryData()
     }
     
-    func didSelectItem(_ item: DiscoveryItem) {
+    func didSelectItem(_ item: ProductModel) {
         AnalyticsManager.shared.logEvent(.buttonTap(name: "discovery item selected"))
         CrashReporter.shared.log(message: "Selected discovery item")
         router?.showComingSoonAlert()
@@ -38,7 +38,7 @@ extension DiscoveryPresenter: DiscoveryPresenterProtocol {
 
 // MARK: - DiscoveryInteractorOutputProtocol
 extension DiscoveryPresenter: DiscoveryInteractorOutputProtocol {
-    func fetchSuccess(firstList: [DiscoveryItem], secondList: [DiscoveryItem], twoColumnList: [DiscoveryItem]) {
+    func fetchSuccess(firstList: [ProductModel], secondList: [ProductModel], twoColumnList: [ProductModel]) {
         view?.hideLoading()
         view?.updateFirstHorizontalList(firstList)
         view?.updateSecondHorizontalList(secondList)

@@ -58,11 +58,18 @@
 		CB34AB232D3FF71D001BFAA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB34AAAF2D3FF71D001BFAA0 /* LaunchScreen.storyboard */; };
 		CB34AB242D3FF71D001BFAA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB34AAB12D3FF71D001BFAA0 /* Main.storyboard */; };
 		CB34AB252D3FF71D001BFAA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CB34AAF62D3FF71D001BFAA0 /* Localizable.strings */; };
-		CB34AB2C2D3FF722001BFAA0 /* UINavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34AB262D3FF722001BFAA0 /* UINavigationControllerTests.swift */; };
-		CB34AB2D2D3FF722001BFAA0 /* DefineXHomeAssigmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34AB292D3FF722001BFAA0 /* DefineXHomeAssigmentTests.swift */; };
-		CB34AB2E2D3FF722001BFAA0 /* MainTabBarControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34AB2A2D3FF722001BFAA0 /* MainTabBarControllerTests.swift */; };
 		CB34AB322D3FF725001BFAA0 /* DefineXHomeAssigmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34AB2F2D3FF725001BFAA0 /* DefineXHomeAssigmentUITests.swift */; };
 		CB34AB332D3FF725001BFAA0 /* DefineXHomeAssigmentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB34AB302D3FF725001BFAA0 /* DefineXHomeAssigmentUITestsLaunchTests.swift */; };
+		CB90B1832D48DB970052734A /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B16B2D48D96E0052734A /* NetworkManagerTests.swift */; };
+		CB90B1842D48DBA70052734A /* DiscoveryInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B1812D48DA670052734A /* DiscoveryInteractorTests.swift */; };
+		CB90B1852D48DBAF0052734A /* LoginInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B17F2D48DA4E0052734A /* LoginInteractorTests.swift */; };
+		CB90B1862D48DBBB0052734A /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B1712D48D99E0052734A /* UserManagerTests.swift */; };
+		CB90B1872D48DBBB0052734A /* KeychainManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B16F2D48D9970052734A /* KeychainManagerTests.swift */; };
+		CB90B1882D48DBBB0052734A /* ApplicationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B16D2D48D9830052734A /* ApplicationManagerTests.swift */; };
+		CB90B1892D48DBC60052734A /* SocialButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B1792D48DA0C0052734A /* SocialButtonTests.swift */; };
+		CB90B18A2D48DBC60052734A /* GradientButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B1772D48DA050052734A /* GradientButtonTests.swift */; };
+		CB90B18B2D48DBC60052734A /* CustomTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B1752D48D9FA0052734A /* CustomTextFieldTests.swift */; };
+		CB90B18D2D48DC150052734A /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90B18C2D48DC150052734A /* ApplicationManager.swift */; };
 		CBE36BCB2D3F8CB40015FD4C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CBE36BCA2D3F8CB40015FD4C /* SDWebImage */; };
 /* End PBXBuildFile section */
 
@@ -130,11 +137,18 @@
 		CB34AAF52D3FF71D001BFAA0 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CB34AAF82D3FF71D001BFAA0 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		CB34AAF92D3FF71D001BFAA0 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
-		CB34AB262D3FF722001BFAA0 /* UINavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerTests.swift; sourceTree = "<group>"; };
-		CB34AB292D3FF722001BFAA0 /* DefineXHomeAssigmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineXHomeAssigmentTests.swift; sourceTree = "<group>"; };
-		CB34AB2A2D3FF722001BFAA0 /* MainTabBarControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarControllerTests.swift; sourceTree = "<group>"; };
 		CB34AB2F2D3FF725001BFAA0 /* DefineXHomeAssigmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineXHomeAssigmentUITests.swift; sourceTree = "<group>"; };
 		CB34AB302D3FF725001BFAA0 /* DefineXHomeAssigmentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefineXHomeAssigmentUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CB90B16B2D48D96E0052734A /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		CB90B16D2D48D9830052734A /* ApplicationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManagerTests.swift; sourceTree = "<group>"; };
+		CB90B16F2D48D9970052734A /* KeychainManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManagerTests.swift; sourceTree = "<group>"; };
+		CB90B1712D48D99E0052734A /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
+		CB90B1752D48D9FA0052734A /* CustomTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldTests.swift; sourceTree = "<group>"; };
+		CB90B1772D48DA050052734A /* GradientButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButtonTests.swift; sourceTree = "<group>"; };
+		CB90B1792D48DA0C0052734A /* SocialButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialButtonTests.swift; sourceTree = "<group>"; };
+		CB90B17F2D48DA4E0052734A /* LoginInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTests.swift; sourceTree = "<group>"; };
+		CB90B1812D48DA670052734A /* DiscoveryInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryInteractorTests.swift; sourceTree = "<group>"; };
+		CB90B18C2D48DC150052734A /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				CB34AAC52D3FF71D001BFAA0 /* KeychainManager.swift */,
+				CB90B18C2D48DC150052734A /* ApplicationManager.swift */,
 				CB34AAC62D3FF71D001BFAA0 /* UserManager.swift */,
 			);
 			path = Managers;
@@ -530,28 +545,13 @@
 			path = DefineXHomeAssigment;
 			sourceTree = "<group>";
 		};
-		CB34AB272D3FF722001BFAA0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CB34AB262D3FF722001BFAA0 /* UINavigationControllerTests.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		CB34AB282D3FF722001BFAA0 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				CB34AB272D3FF722001BFAA0 /* Extensions */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		CB34AB2B2D3FF722001BFAA0 /* DefineXHomeAssigmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB34AB282D3FF722001BFAA0 /* Common */,
-				CB34AB292D3FF722001BFAA0 /* DefineXHomeAssigmentTests.swift */,
-				CB34AB2A2D3FF722001BFAA0 /* MainTabBarControllerTests.swift */,
+				CB90B16A2D48D95A0052734A /* NetworkTests */,
+				CB90B1692D48D9500052734A /* ModulesTest */,
+				CB90B1682D48D9430052734A /* ManagersTest */,
+				CB90B1672D48D9370052734A /* CommonTest */,
 			);
 			path = DefineXHomeAssigmentTests;
 			sourceTree = "<group>";
@@ -563,6 +563,67 @@
 				CB34AB302D3FF725001BFAA0 /* DefineXHomeAssigmentUITestsLaunchTests.swift */,
 			);
 			path = DefineXHomeAssigmentUITests;
+			sourceTree = "<group>";
+		};
+		CB90B1672D48D9370052734A /* CommonTest */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B1742D48D9E70052734A /* ComponentsTest */,
+			);
+			path = CommonTest;
+			sourceTree = "<group>";
+		};
+		CB90B1682D48D9430052734A /* ManagersTest */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B1712D48D99E0052734A /* UserManagerTests.swift */,
+				CB90B16F2D48D9970052734A /* KeychainManagerTests.swift */,
+				CB90B16D2D48D9830052734A /* ApplicationManagerTests.swift */,
+			);
+			path = ManagersTest;
+			sourceTree = "<group>";
+		};
+		CB90B1692D48D9500052734A /* ModulesTest */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B17E2D48DA3E0052734A /* Discovery */,
+				CB90B17D2D48DA290052734A /* Auth */,
+			);
+			path = ModulesTest;
+			sourceTree = "<group>";
+		};
+		CB90B16A2D48D95A0052734A /* NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B16B2D48D96E0052734A /* NetworkManagerTests.swift */,
+			);
+			path = NetworkTests;
+			sourceTree = "<group>";
+		};
+		CB90B1742D48D9E70052734A /* ComponentsTest */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B1792D48DA0C0052734A /* SocialButtonTests.swift */,
+				CB90B1772D48DA050052734A /* GradientButtonTests.swift */,
+				CB90B1752D48D9FA0052734A /* CustomTextFieldTests.swift */,
+			);
+			path = ComponentsTest;
+			sourceTree = "<group>";
+		};
+		CB90B17D2D48DA290052734A /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B17F2D48DA4E0052734A /* LoginInteractorTests.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CB90B17E2D48DA3E0052734A /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				CB90B1812D48DA670052734A /* DiscoveryInteractorTests.swift */,
+			);
+			path = Discovery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -728,6 +789,7 @@
 				CB34AB002D3FF71D001BFAA0 /* GradientButton.swift in Sources */,
 				CB34AB012D3FF71D001BFAA0 /* SocialButton.swift in Sources */,
 				CB34AB022D3FF71D001BFAA0 /* Colors.swift in Sources */,
+				CB90B18D2D48DC150052734A /* ApplicationManager.swift in Sources */,
 				CB34AB032D3FF71D001BFAA0 /* CacheManager+Keys.swift in Sources */,
 				CB34AB042D3FF71D001BFAA0 /* String+Localization.swift in Sources */,
 				CB34AB052D3FF71D001BFAA0 /* UIButton+Border.swift in Sources */,
@@ -764,9 +826,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB34AB2C2D3FF722001BFAA0 /* UINavigationControllerTests.swift in Sources */,
-				CB34AB2D2D3FF722001BFAA0 /* DefineXHomeAssigmentTests.swift in Sources */,
-				CB34AB2E2D3FF722001BFAA0 /* MainTabBarControllerTests.swift in Sources */,
+				CB90B1832D48DB970052734A /* NetworkManagerTests.swift in Sources */,
+				CB90B1852D48DBAF0052734A /* LoginInteractorTests.swift in Sources */,
+				CB90B1842D48DBA70052734A /* DiscoveryInteractorTests.swift in Sources */,
+				CB90B1892D48DBC60052734A /* SocialButtonTests.swift in Sources */,
+				CB90B18A2D48DBC60052734A /* GradientButtonTests.swift in Sources */,
+				CB90B18B2D48DBC60052734A /* CustomTextFieldTests.swift in Sources */,
+				CB90B1862D48DBBB0052734A /* UserManagerTests.swift in Sources */,
+				CB90B1872D48DBBB0052734A /* KeychainManagerTests.swift in Sources */,
+				CB90B1882D48DBBB0052734A /* ApplicationManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -119,7 +119,7 @@ final class DiscoveryHorizontalCell: UICollectionViewCell {
     }
     
     // MARK: - Configuration
-    func configure(with item: DiscoveryItem) {
+    func configure(with item: ProductModel) {
         titleLabel.text = item.description
         
         if !item.discount.isEmpty {

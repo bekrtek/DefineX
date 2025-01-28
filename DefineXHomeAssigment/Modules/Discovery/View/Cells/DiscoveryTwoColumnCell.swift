@@ -132,7 +132,7 @@ final class DiscoveryTwoColumnCell: UICollectionViewCell {
     }
     
     // MARK: - Configuration
-    func configure(with item: DiscoveryItem) {
+    func configure(with item: ProductModel) {
         titleLabel.text = item.description
         currentPriceLabel.text = "\(item.price.currency)\(String(format: "%.2f", item.price.value))"
         

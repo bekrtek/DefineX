@@ -12,9 +12,9 @@ final class DiscoveryViewController: UIViewController {
     
     // MARK: - Properties
     var presenter: DiscoveryPresenterProtocol?
-    private var firstHorizontalItems: [DiscoveryItem] = []
-    private var secondHorizontalItems: [DiscoveryItem] = []
-    private var twoColumnItems: [DiscoveryItem] = []
+    private var firstHorizontalItems: [ProductModel] = []
+    private var secondHorizontalItems: [ProductModel] = []
+    private var twoColumnItems: [ProductModel] = []
     
     // MARK: - UI Components
     private lazy var scrollView: UIScrollView = {
@@ -99,7 +99,7 @@ final class DiscoveryViewController: UIViewController {
     
     // MARK: - Setup
     private func setupUI() {
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = DarkLightModeColor.background
         navigationItem.title = "Home"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -265,17 +265,17 @@ extension DiscoveryViewController: DiscoveryViewProtocol {
         present(alert, animated: true)
     }
     
-    func updateFirstHorizontalList(_ items: [DiscoveryItem]) {
+    func updateFirstHorizontalList(_ items: [ProductModel]) {
         firstHorizontalItems = items
         firstHorizontalCollectionView.reloadData()
     }
     
-    func updateSecondHorizontalList(_ items: [DiscoveryItem]) {
+    func updateSecondHorizontalList(_ items: [ProductModel]) {
         secondHorizontalItems = items
         secondHorizontalCollectionView.reloadData()
     }
     
-    func updateTwoColumnList(_ items: [DiscoveryItem]) {
+    func updateTwoColumnList(_ items: [ProductModel]) {
         twoColumnItems = items
         twoColumnCollectionView.reloadData()
         

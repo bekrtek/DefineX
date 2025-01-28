@@ -1,0 +1,45 @@
+{
+  "configurations" : [
+    {
+      "id" : "B85BD998-C014-4C76-9C10-5C0B34598E9B",
+      "name" : "Configuration 1",
+      "options" : {
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:DefineXHomeAssigment.xcodeproj",
+          "identifier" : "DCBF68992B4D6F3C00F7BD1B",
+          "name" : "DefineXHomeAssigment"
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:DefineXHomeAssigment.xcodeproj",
+          "identifier" : "DCBF68992B4D6F3C00F7BD1B",
+          "name" : "DefineXHomeAssigment"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DefineXHomeAssigment.xcodeproj",
+      "identifier" : "DCBF68992B4D6F3C00F7BD1B",
+      "name" : "DefineXHomeAssigment"
+    }
+  },
+  "testConfigurations" : [
+    {
+      "id" : "B85BD998-C014-4C76-9C10-5C0B34598E9B",
+      "name" : "Configuration 1",
+      "options" : {
+        "maximumTestExecutionTimeAllowance" : 120,
+        "testExecutionOrdering" : "random",
+        "testTimeoutsEnabled" : true,
+        "areTestsParallelizable" : false,
+        "testRepetitionMode" : "retryOnFailure"
+      }
+    }
+  ],
+  "version" : 1
+} 

@@ -17,8 +17,6 @@ enum CacheError: Error {
 protocol CacheManagerProtocol {
     func save<T: Codable>(_ object: T, forKey key: String) throws
     func load<T: Codable>(forKey key: String) throws -> T
-    func remove(forKey key: String)
-    func clearAll()
 }
 
 final class CacheManager: CacheManagerProtocol {
@@ -83,23 +81,5 @@ final class CacheManager: CacheManagerProtocol {
         memoryCache.setObject(data as NSData, forKey: key as NSString)
         
         return object
-    }
-    
-    func remove(forKey key: String) {
-        // Remove from memory cache
-        memoryCache.removeObject(forKey: key as NSString)
-        
-        // Remove from disk
-        let fileURL = self.fileURL(forKey: key)
-        try? fileManager.removeItem(at: fileURL)
-    }
-    
-    func clearAll() {
-        // Clear memory cache
-        memoryCache.removeAllObjects()
-        
-        // Clear disk cache
-        try? fileManager.removeItem(at: cacheDirectory)
-        try? fileManager.createDirectory(at: cacheDirectory, withIntermediateDirectories: true)
     }
 } 

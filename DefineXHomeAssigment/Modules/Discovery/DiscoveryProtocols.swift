@@ -15,9 +15,9 @@ protocol DiscoveryViewProtocol: AnyObject {
     func showLoading()
     func hideLoading()
     func showError(_ message: String)
-    func updateFirstHorizontalList(_ items: [DiscoveryItem])
-    func updateSecondHorizontalList(_ items: [DiscoveryItem])
-    func updateTwoColumnList(_ items: [DiscoveryItem])
+    func updateFirstHorizontalList(_ items: [ProductModel])
+    func updateSecondHorizontalList(_ items: [ProductModel])
+    func updateTwoColumnList(_ items: [ProductModel])
 }
 
 // MARK: - Presenter
@@ -28,7 +28,7 @@ protocol DiscoveryPresenterProtocol: AnyObject {
     
     func viewDidLoad()
     func refreshData()
-    func didSelectItem(_ item: DiscoveryItem)
+    func didSelectItem(_ item: ProductModel)
 }
 
 // MARK: - Interactor
@@ -40,7 +40,7 @@ protocol DiscoveryInteractorProtocol: AnyObject {
 
 // MARK: - Interactor Output
 protocol DiscoveryInteractorOutputProtocol: AnyObject {
-    func fetchSuccess(firstList: [DiscoveryItem], secondList: [DiscoveryItem], twoColumnList: [DiscoveryItem])
+    func fetchSuccess(firstList: [ProductModel], secondList: [ProductModel], twoColumnList: [ProductModel])
     func fetchFailure(error: Error)
 }
 

@@ -7,7 +7,12 @@
 
 import UIKit
 
+struct DarkLightModeColor {
+    static let background = UIColor(named: "BackgroundColor")
+}
+
 struct Colors {
+    
     static let primary = UIColor(red: 67/255, green: 134/255, blue: 244/255, alpha: 1) // Blue color for title
     
     struct Button {

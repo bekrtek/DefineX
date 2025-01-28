@@ -16,13 +16,13 @@ final class DiscoveryInteractor {
     let dispatchGroup = DispatchGroup()
 
     var firstListError: Error? = nil
-    var firstList: [DiscoveryItem]? = nil
+    var firstList: [ProductModel]? = nil
 
     var secondListError: Error? = nil
-    var secondList: [DiscoveryItem]? = nil
+    var secondList: [ProductModel]? = nil
 
     var twoColumnListError: Error? = nil
-    var twoColumnList: [DiscoveryItem]? = nil
+    var twoColumnList: [ProductModel]? = nil
 
     // MARK: - Initialization
     init(networkManager: NetworkManagerProtocol = NetworkManager.shared,
@@ -48,7 +48,7 @@ extension DiscoveryInteractor: DiscoveryInteractorProtocol {
         // Helper method to handle network requests
         func fetchList(
             endpoint: DiscoveryEndpoint,
-            completion: @escaping (Result<[DiscoveryItem], NetworkError>) -> Void
+            completion: @escaping (Result<[ProductModel], NetworkError>) -> Void
         ) {
             group.enter()
             networkManager.request(
